@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alwin.eshop.inventory.mapper.ProductInventoryMapper">
+  <resultMap id="BaseResultMap" type="com.alwin.eshop.inventory.model.ProductInventory">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="inventory_cnt" jdbcType="INTEGER" property="inventoryCnt" />
+  </resultMap>
+
+  <sql id="columns">
+        product_id, inventory_cnt
+    </sql>
+
+  <sql id="tableName">
+        product_inventory
+    </sql>
+
+  <select id="findById" resultMap="BaseResultMap">
+    select <include refid="columns"/> from <include refid="tableName"/>
+    where product_id = #{productId}
+  </select>
+
+  <update id="updateProductInventory" parameterType="com.alwin.eshop.inventory.model.ProductInventory">
+    update <include refid="tableName"/> set inventory_cnt = #{inventoryCnt}
+    where product_id = #{productId}
+  </update>
+
+</mapper>

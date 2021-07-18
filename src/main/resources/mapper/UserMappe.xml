@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alwin.eshop.inventory.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.alwin.eshop.inventory.model.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+    </resultMap>
+
+    <sql id="columns">
+        id, `name`, age
+    </sql>
+
+    <sql id="tableName">
+        `user`
+    </sql>
+
+    <select id="findUserInfo" resultType="com.alwin.eshop.inventory.model.User">
+        select <include refid="columns"/> from <include refid="tableName"/>
+    </select>
+
+</mapper>
